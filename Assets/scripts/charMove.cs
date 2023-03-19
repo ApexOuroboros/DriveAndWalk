@@ -13,10 +13,6 @@ public class charMove : MonoBehaviour
     public float gravity = 20.0f;
     public Vector3 moveDirection = Vector3.zero;
 
-    /*public float mouseSensitivity = 2f;
-    public float lookUpClamp = -30f;
-    public float lookDownClamp = 60f;
-    float rotateX, rotateY;*/
 
     // Start is called before the first frame update
     void Start()
@@ -29,12 +25,12 @@ public class charMove : MonoBehaviour
     void Update()
     {
         Movement();
-        //RotateAndLook();
-
     }
 
     void Movement()
     {
+
+
         if (characterController.isGrounded)
         {
             moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
@@ -52,15 +48,4 @@ public class charMove : MonoBehaviour
         characterController.Move(moveDirection * Time.deltaTime);
     }
 
-    /*void RotateAndLook()
-    {
-        rotateX = Input.GetAxis("Mouse X") * mouseSensitivity;
-        rotateY -= Input.GetAxis("Mouse Y") * mouseSensitivity;
-
-        rotateY = Mathf.Clamp(rotateY, lookUpClamp, lookDownClamp);
-
-        transform.Rotate(0f, rotateX, 0f);
-
-        cameraContainer.transform.localRotation = Quaternion.Euler(rotateY, 0f, 0f);
-    }*/
 }
